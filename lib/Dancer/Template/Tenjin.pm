@@ -7,7 +7,7 @@ use Dancer::FileUtils 'path';
 
 use base 'Dancer::Template::Abstract';
 
-our $VERSION = 0.1;
+our $VERSION = 0.11;
 
 our $ENGINE;
 
@@ -56,14 +56,17 @@ Dancer::Template::Tenjin - Tenjin wrapper for Dancer
 
 =head1 VERSION
 
-Version 0.01
+Version 0.011
 
 =head1 SYNOPSIS
 
 	# in your config.yml
 	template: "tenjin"
 
-	# note: templates must used the '.tt' extension
+	# in your webapp
+	use Tenjin;
+
+	# note: templates must use the '.tt' extension
 
 =head1 DESCRIPTION
 
@@ -83,7 +86,9 @@ in your app's configuration file (config.yml) like so:
 You can also directly set it in your app code with the B<set> keyword.
 
 Now you can create Tenjin templates normally, but note that due to a
-Dancer restriction your templates files must end in the '.tt' extension.
+Dancer restriction your template files must end in the '.tt' extension as
+Dancer automatically adds this extension to the template names you declare
+in your apps.
 
 =head1 SEE ALSO
 
