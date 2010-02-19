@@ -2,7 +2,7 @@ NAME
     Dancer::Template::Tenjin - Tenjin wrapper for Dancer
 
 VERSION
-    Version 0.02
+    Version 0.021
 
 SYNOPSIS
             # in your config.yml
