@@ -11,8 +11,11 @@ WriteMakefile(
       ? ('LICENSE'=> 'perl')
       : ()),
     PL_FILES            => {},
-    PREREQ_PM => {
-        'Test::More' => 0,
+    PREREQ_PM		=> {
+        'Test::More'		=> 0,
+        'Dancer'		=> 1.15,
+        'Tenjin'		=> 0.051,
+        'Dancer::ModuleLoader'	=> 0,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Dancer-Template-Tenjin-*' },

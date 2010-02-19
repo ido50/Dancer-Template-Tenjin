@@ -81,7 +81,7 @@ embedded Perl code instead of defining its own language.
 In order to use this engine, you need to set your webapp's template engine
 in your app's configuration file (config.yml) like so:
 
-    template: "tenjin"
+	template: "tenjin"
 
 You can also directly set it in your app code with the B<set> keyword.
 
@@ -89,6 +89,17 @@ Now you can create Tenjin templates normally, but note that due to a
 Dancer restriction your template files must end in the '.tt' extension as
 Dancer automatically adds this extension to the template names you declare
 in your apps.
+
+=head1 METHODS
+
+=head2 init()
+
+Initializes a template engine by generating a new instance of L<Tenjin>.
+
+=head2 render( $template, $tokens )
+
+Receives a template name and a hash-ref of key-value pairs to pass to
+the template, and returns the template rendered by Tenjin.
 
 =head1 SEE ALSO
 
