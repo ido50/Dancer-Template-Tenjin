@@ -1,8 +1,8 @@
 Revision history for Dancer-Template-Tenjin
 
-0.021	2010-02-19, 20:20:00
+0.2	2010-02-19, 22:20:00
 	- Added prerequisites for the Makefile
 	- Added pod documentation for the module's methods
 
-0.01    2010-02-18, 12:35:00
+0.1	2010-02-18, 12:35:00
         - Initial version with support for tenjin template files.
