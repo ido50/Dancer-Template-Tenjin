@@ -2,13 +2,16 @@ NAME
     Dancer::Template::Tenjin - Tenjin wrapper for Dancer
 
 VERSION
-    Version 0.01
+    Version 0.02
 
 SYNOPSIS
             # in your config.yml
             template: "tenjin"
 
-            # note: templates must used the '.tt' extension
+            # in your webapp
+            use Tenjin;
+
+            # note: templates must use the '.tt' extension
 
 DESCRIPTION
     This class is an interface between Dancer's template engine abstraction
@@ -22,12 +25,22 @@ DESCRIPTION
     In order to use this engine, you need to set your webapp's template
     engine in your app's configuration file (config.yml) like so:
 
-        template: "tenjin"
+            template: "tenjin"
 
     You can also directly set it in your app code with the set keyword.
 
     Now you can create Tenjin templates normally, but note that due to a
-    Dancer restriction your templates files must end in the '.tt' extension.
+    Dancer restriction your template files must end in the '.tt' extension
+    as Dancer automatically adds this extension to the template names you
+    declare in your apps.
+
+METHODS
+  init()
+    Initializes a template engine by generating a new instance of Tenjin.
+
+  render( $template, $tokens )
+    Receives a template name and a hash-ref of key-value pairs to pass to
+    the template, and returns the template rendered by Tenjin.
 
 SEE ALSO
     Dancer, Tenjin

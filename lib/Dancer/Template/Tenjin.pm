@@ -7,7 +7,7 @@ use Dancer::FileUtils 'path';
 
 use base 'Dancer::Template::Abstract';
 
-our $VERSION = 0.11;
+our $VERSION = 0.02;
 
 our $ENGINE;
 
@@ -56,7 +56,7 @@ Dancer::Template::Tenjin - Tenjin wrapper for Dancer
 
 =head1 VERSION
 
-Version 0.011
+Version 0.02
 
 =head1 SYNOPSIS
 
