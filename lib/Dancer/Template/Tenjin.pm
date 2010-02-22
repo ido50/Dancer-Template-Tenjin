@@ -1,21 +1,18 @@
 package Dancer::Template::Tenjin;
 
-use warnings;
 use strict;
-use Dancer::ModuleLoader;
+use warnings;
+use Tenjin;
 use Dancer::FileUtils 'path';
 
 use base 'Dancer::Template::Abstract';
 
-our $VERSION = 0.2;
+our $VERSION = 0.3;
 
 our $ENGINE;
 
 sub init {
 	my $self = shift;
-
-	die "Tenjin is needed by Dancer::Template::Tenjin"
-		unless Dancer::ModuleLoader->load('Tenjin');
 
 	# set Tenjin configuration options
 	my $conf = { postfix => '.tt' };
@@ -56,7 +53,7 @@ Dancer::Template::Tenjin - Tenjin wrapper for Dancer
 
 =head1 VERSION
 
-Version 0.2
+Version 0.3
 
 =head1 SYNOPSIS
 
@@ -109,6 +106,21 @@ L<Dancer>, L<Tenjin>
 
 Ido Perlmuter, C<< <ido at ido50.net> >>
 
+=head1 ACKNOWLEDGEMENTS
+
+=over
+
+=item * Alexis Sukrieh, C<< <sukria@cpan.org> >>
+
+Author of L<Dancer>, who wrote L<Dancer::Template::Toolkit>,
+on which this module is based.
+
+=item * Sawyer X, C<< <xsawyerx at cpan.org> >>
+
+Submitted helpful changes for version 0.3.
+
+=back
+
 =head1 TODO
 
 =over 2
@@ -157,11 +169,6 @@ L<http://cpanratings.perl.org/d/Dancer-Template-Tenjin>
 L<http://search.cpan.org/dist/Dancer-Template-Tenjin/>
 
 =back
-
-=head1 ACKNOWLEDGEMENTS
-
-Alexis Sukrieh, author of L<Dancer>, who wrote L<Dancer::Template::Toolkit>,
-on which this module is based.
 
 =head1 LICENSE AND COPYRIGHT
 

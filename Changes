@@ -1,5 +1,14 @@
 Revision history for Dancer-Template-Tenjin
 
+0.3	2010-02-22, 14:45:00
+	- Removed boilerplate test, it's only a starters test
+	- Entered filter for manifest.t to ignore .git folder
+	- Removed PREREQ_PM for Dancer::ModuleLoader, it's included in Dancer core
+	- Removed "use Dancer::ModuleLoader" and ModuleLoader loading of Tenjin
+	  (should only be used for things in Dancer core)
+	- Added simple "use Tenjin" to get compile-time benefits and correct usage
+	- Replaced ignore.txt with .gitignore
+
 0.2	2010-02-19, 22:20:00
 	- Added prerequisites for the Makefile
 	- Added pod documentation for the module's methods

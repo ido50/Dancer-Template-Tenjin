@@ -2,7 +2,7 @@ NAME
     Dancer::Template::Tenjin - Tenjin wrapper for Dancer
 
 VERSION
-    Version 0.021
+    Version 0.3
 
 SYNOPSIS
             # in your config.yml
@@ -48,6 +48,16 @@ SEE ALSO
 AUTHOR
     Ido Perlmuter, "<ido at ido50.net>"
 
+ACKNOWLEDGEMENTS
+    *   Alexis Sukrieh, "<sukria@cpan.org>"
+
+        Author of Dancer, who wrote Dancer::Template::Toolkit, on which this
+        module is based.
+
+    *   Sawyer X, "<xsawyerx at cpan.org>"
+
+        Submitted helpful changes for version 0.3.
+
 TODO
     * Non-file sources
 
@@ -88,10 +98,6 @@ SUPPORT
     *   Search CPAN
 
         <http://search.cpan.org/dist/Dancer-Template-Tenjin/>
-
-ACKNOWLEDGEMENTS
-    Alexis Sukrieh, author of Dancer, who wrote Dancer::Template::Toolkit,
-    on which this module is based.
 
 LICENSE AND COPYRIGHT
     Copyright 2010 Ido Perlmuter.
