@@ -106,6 +106,8 @@ L<Dancer>, L<Tenjin>
 
 Ido Perlmuter, C<< <ido at ido50.net> >>
 
+Development of this module is done with github at L<http://github.com/ido50/Dancer-Template-Tenjin>.
+
 =head1 ACKNOWLEDGEMENTS
 
 =over
