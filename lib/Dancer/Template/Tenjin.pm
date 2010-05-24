@@ -7,7 +7,7 @@ use Dancer::FileUtils 'path';
 
 use base 'Dancer::Template::Abstract';
 
-our $VERSION = 0.3;
+our $VERSION = 0.4;
 
 our $ENGINE;
 
@@ -15,6 +15,7 @@ sub init {
 	my $self = shift;
 
 	# set Tenjin configuration options
+	# postfix is set to .tt due to a Dancer constraint
 	my $conf = { postfix => '.tt' };
 
 	$conf->{path} = path($self->{settings}{'appdir'}, 'views')
