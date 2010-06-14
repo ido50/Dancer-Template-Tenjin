@@ -54,7 +54,7 @@ Dancer::Template::Tenjin - Tenjin wrapper for Dancer
 
 =head1 VERSION
 
-Version 0.3
+Version 0.4
 
 =head1 SYNOPSIS
 
@@ -121,6 +121,10 @@ on which this module is based.
 =item * Sawyer X, C<< <xsawyerx at cpan.org> >>
 
 Submitted helpful changes for version 0.3.
+
+=item * franckcuny (via GitHub)
+
+Created a test.
 
 =back
 

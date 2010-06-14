@@ -1,5 +1,8 @@
 Revision history for Dancer-Template-Tenjin
 
+0.4	TBR
+	- Added a simple test.
+
 0.3	2010-02-22, 14:45:00
 	- Removed boilerplate test, it's only a starters test
 	- Entered filter for manifest.t to ignore .git folder
