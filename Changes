@@ -1,7 +1,11 @@
 Revision history for Dancer-Template-Tenjin
 
-0.4	TBR
-	- Added a simple test.
+{{$NEXT}}
+	- Updated module to reflect changes in Dancer
+	- Added a simple test (thanks to Franck Cuny)
+	- Fixed bug where path to template directory was not set as an array-ref
+	- Module catches rendering errors with Try::Tiny (and rethrows them)
+	- Migrated distribution to use Dist::Zilla
 
 0.3	2010-02-22, 14:45:00
 	- Removed boilerplate test, it's only a starters test
