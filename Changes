@@ -1,6 +1,8 @@
 Revision history for Dancer-Template-Tenjin
 
 {{$NEXT}}
+	- Updated due to Tenjin's new release which fixes encoding problem
+	- Added two small encoding tests
 
 0.4       2010-08-06 21:45:35 Asia/Jerusalem
 	- Updated module to reflect changes in Dancer

@@ -1,17 +1,20 @@
 package Dancer::Template::Tenjin;
 
+# ABSTRACT: Tenjin wrapper for Dancer
+
 use strict;
 use warnings;
 
-use Tenjin;
+our $VERSION = "0.5";
+$VERSION = eval $VERSION;
+
+use Tenjin 0.070001;
 use Dancer::Config 'setting';
 use File::Basename;
 use Try::Tiny;
 use Carp;
 
 use base 'Dancer::Template::Abstract';
-
-# ABSTRACT: Tenjin wrapper for Dancer
 
 =head1 NAME
 
@@ -23,6 +26,10 @@ Dancer::Template::Tenjin - Tenjin wrapper for Dancer
 	template: "tenjin"
 
 	# note: templates must use the '.tt' extension
+
+	# you might also want to add (if your templates are UTF-8, which is the
+	# default encoding used by Tenjin):
+	charset: "UTF-8"
 
 =head1 DESCRIPTION
 
@@ -55,15 +62,7 @@ Initializes a template engine by generating a new instance of L<Tenjin>.
 =cut
 
 sub init {
-	my $self = shift;
-
-	# set Tenjin configuration options
-	my $conf = { postfix => '.tt' };
-
-	$conf->{path} = [setting('views')];
-
-	# get an instance of Tenjin
-	$self->{engine} = Tenjin->new($conf);
+	$_[0]->{engine} = Tenjin->new({ postfix => '.tt', path => [setting('views')] });
 }
 
 =head2 render( $template, $tokens )
@@ -77,7 +76,9 @@ sub render($$$) {
 	my ($self, $template, $tokens) = @_;
 
 	croak "'$template' is not a regular file"
-		if !ref($template) && (!-f $template);
+		if !ref $template && !-f $template;
+
+	$tokens ||= {};
 
 	# Dancer seems to be sending the full filename (i.e. including full path)
 	# of the template, while we only need the relative path, so let's
@@ -94,12 +95,11 @@ sub render($$$) {
 	# ignore 'bad' tokens - this is here because for some reason
 	# Dancer is passing the entire user agent as a token, and I can't
 	# find the cause of that yet.
-	my %vars = %$tokens;
-	foreach (keys %vars) {
-		delete $vars{$_} if m/[ ()]/;
+	foreach (keys %$tokens) {
+		delete $tokens->{$_} if m/[ ()]/;
 	}
 
-	my $output = try { $self->{engine}->render($template, \%vars) } catch { croak $_ };
+	my $output = try { $self->{engine}->render($template, $tokens) } catch { croak $_ };
 	return $output;
 }
 
@@ -181,7 +181,7 @@ L<http://search.cpan.org/dist/Dancer-Template-Tenjin/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 Ido Perlmuter.
+Copyright 2010-2011 Ido Perlmuter.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
