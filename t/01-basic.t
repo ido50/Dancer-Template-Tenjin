@@ -13,7 +13,7 @@ my $engine;
 eval { $engine = Dancer::Template::Tenjin->new };
 is($@, '', "Dancer::Template::Tenjin engine created");
 
-$engine->{engine}->{path} = ['t'];
+$engine->engine->{path} = ['t'];
 
 is($engine->render(path('t', '01-basic.tt'), {
 	var1 => 1,
