@@ -5,20 +5,26 @@ package Dancer::Template::Tenjin;
 use strict;
 use warnings;
 
-our $VERSION = "0.5";
+our $VERSION = '0.5';
 $VERSION = eval $VERSION;
 
 use Tenjin 0.070001;
-use Dancer::Config 'setting';
+use Moo;
+use Dancer::Core::Role::Config 'setting';
+use Dancer::Core::Types;
 use File::Basename;
 use Try::Tiny;
 use Carp;
 
-use base 'Dancer::Template::Abstract';
+with 'Dancer::Core::Role::Template';
 
 =head1 NAME
 
 Dancer::Template::Tenjin - Tenjin wrapper for Dancer
+
+=head1 VERSION
+
+version 0.5
 
 =head1 SYNOPSIS
 
@@ -55,15 +61,20 @@ in your apps.
 
 =head1 METHODS
 
-=head2 init()
-
-Initializes a template engine by generating a new instance of L<Tenjin>.
-
 =cut
+has '+engine' => (
+    isa => InstanceOf['Tenjin'],
+);
 
-sub init {
-	$_[0]->{engine} = Tenjin->new({ postfix => '.tt', path => [setting('views')] });
+sub _build_name {'Tenjin'}
+
+sub _build_engine {
+    my $self = shift;
+    Tenjin->new({ postfix => '.tt', path => [$self->views] });
 }
+#sub init {
+#	$_[0]->{engine} = Tenjin->new({ postfix => '.tt', path => [setting('views')] });
+#}
 
 =head2 render( $template, $tokens )
 
@@ -72,7 +83,7 @@ the template, and returns the template rendered by Tenjin.
 
 =cut
 
-sub render($$$) {
+sub render ($$$) {
 	my ($self, $template, $tokens) = @_;
 
 	croak "'$template' is not a regular file"
@@ -83,7 +94,7 @@ sub render($$$) {
 	# Dancer seems to be sending the full filename (i.e. including full path)
 	# of the template, while we only need the relative path, so let's
 	# strip the base path from the template filename
-	foreach (@{$self->{engine}->{path}}) {
+	foreach (@{$self->engine->{path}}) {
 		my $basepath = $_;
 		$basepath .= '/' unless $basepath =~ m!/^!;
 
@@ -99,7 +110,7 @@ sub render($$$) {
 		delete $tokens->{$_} if m/[ ()]/;
 	}
 
-	my $output = try { $self->{engine}->render($template, $tokens) } catch { croak $_ };
+	my $output = try { $self->engine->render($template, $tokens) } catch { croak $_ };
 	return $output;
 }
 
